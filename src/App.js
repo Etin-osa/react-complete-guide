@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Person from './components/Persons/Person/Person';
+import Persons from './components/Persons/Persons';
+import Cockpit from './components/Cockpit/Cockpit';
 import classes from './App.css';
 
 
@@ -48,13 +49,11 @@ class App extends Component {
     if (this.state.showPerson) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <Person
-              click={this.deletePersonHandler.bind(null, index)}
-              name={person.name} age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
-          })}
+          <Persons
+            persons={this.state.persons}
+            click={this.deletePersonHandler}
+            changed={this.nameChangedHandler}
+          />
         </div>
       );
 
@@ -71,18 +70,9 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <h1>Does this actually work?</h1>
-        <p className={assignClasses.join(' ')}>This is really working!!</p>
-
-        {/* binding and changing propeties 2 methods:  one here and the other in the second person component below, And take note that the other kind of data sharing or changing is more efficient than this one right here so. Use the bind one more often and be carefull of the arrow kind */}
-        {/* -btn1 <button 
-          style={style}
-          onClick={() => this.switchNameHandler('Maximillian')}>Switch Name</button> */}
-
-        <button
-          className={btnClass.join(' ')}
-          onClick={this.togglePersonHandler}>Toggle Persons</button>
-
+        <Cockpit
+          btnClass={this.btnClass.join(' ')}
+        />
         {/* Putting Person component under conditional statement using ternary operator */}
         {persons}
 
