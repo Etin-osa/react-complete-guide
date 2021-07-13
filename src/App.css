@@ -9,3 +9,26 @@
 .bold {
   font-weight: bold;
 }
+
+.button {
+  background-color: green;
+  color: #fff;
+  font-family: cursive;
+  padding: 13px 16px;
+  margin: 1rem auto;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  background-color: lightgreen;
+  color: black;
+}
+
+.button.Red {
+  background-color: red;
+}
+
+.button.Red:hover {
+  background-color: salmon;
+}

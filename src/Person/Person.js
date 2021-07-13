@@ -1,24 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-// import './Person.css';
-
-const StyledDiv = styled.div`
-  width: 450px;
-  margin: 16px auto;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 3px #ccc;
-  padding: 16px;
-  text-align: center;
-  font-family: 'Helvetica';
-  
-  @media screen and (max-width: 650px) {
-    width: 60%;
-  }
-`
+import classes from './Person.css';
 
 const person = (props) => {
   return (
-    <StyledDiv>
+    <div className={classes.Person}>
         {/* Click call right here from the parent element */}
         <p onClick={props.click}>I'm {props.name}, and i'm {props.age} years old</p>
         <p>{props.children}</p>
@@ -28,7 +13,7 @@ const person = (props) => {
         To fix that you can change value to defaultValue
         */}
         <input type="text" onChange={props.changed} defaultValue={props.name} />
-    </StyledDiv>
+    </div>
   )
 }
 

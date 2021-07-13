@@ -1,23 +1,8 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Person from './Person/Person';
-import './App.css';
+import classes from './App.css';
 
-// Styled Button
-const StyledButton = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green'};
-  color: #fff;
-  font-family: cursive;
-  padding: 13px 16px;
-  margin: 1rem auto;
-  cursor: pointer;
-  border: none;
 
-  &:hover {
-    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-    color: black;
-  }
-`
 
 // Using state and re-rendering using Class based React Component
 class App extends Component {
@@ -58,6 +43,7 @@ class App extends Component {
   render() {
     // Adding Conditionals in React
     let persons = null
+    let btnClass = [classes.button]
 
     if (this.state.showPerson) {
       persons = (
@@ -71,29 +57,31 @@ class App extends Component {
           })}
         </div>
       );
+
+      btnClass.push(classes.Red)
     }
 
-    const classes = [];
+    const assignClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignClasses.push(classes.bold);
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>Does this actually work?</h1>
-        <p className={classes.join(' ')}>This is really working!!</p>
+        <p className={assignClasses.join(' ')}>This is really working!!</p>
 
         {/* binding and changing propeties 2 methods:  one here and the other in the second person component below, And take note that the other kind of data sharing or changing is more efficient than this one right here so. Use the bind one more often and be carefull of the arrow kind */}
         {/* -btn1 <button 
           style={style}
           onClick={() => this.switchNameHandler('Maximillian')}>Switch Name</button> */}
 
-        <StyledButton
-          alt={this.state.showPerson}
-          onClick={this.togglePersonHandler}>Toggle Persons</StyledButton>
+        <button
+          className={btnClass.join(' ')}
+          onClick={this.togglePersonHandler}>Toggle Persons</button>
 
         {/* Putting Person component under conditional statement using ternary operator */}
         {persons}
