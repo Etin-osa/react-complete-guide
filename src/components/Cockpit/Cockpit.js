@@ -1,10 +1,25 @@
 import React from 'react';
+import classes from './Cockpit.css'
 
 const Cockpit = props => {
+  const assignClasses = [];
+  let btnClass = [];
+
+  if (props.showPersons) {
+    btnClass.push(classes.Red)
+  }
+
+  if (props.persons.length <= 2) {
+    assignClasses.push(classes.red);
+  }
+  if (props.persons.length <= 1) {
+    assignClasses.push(classes.bold);
+  }
+
   return (
-    <div>
+    <div className={classes.Cockpit}>
       <h1>Does this actually work?</h1>
-      <p className={props.assigned}>This is really working!!</p>
+      <p className={assignClasses.join(' ')}>This is really working!!</p>
 
       {/* binding and changing propeties 2 methods:  one here and the other in the second person component below, And take note that the other kind of data sharing or changing is more efficient than this one right here so. Use the bind one more often and be carefull of the arrow kind */}
       {/* -btn1 <button 
@@ -12,7 +27,7 @@ const Cockpit = props => {
           onClick={() => this.switchNameHandler('Maximillian')}>Switch Name</button> */}
 
       <button
-        className={props.btnClass}
+        className={btnClass.join(' ')}
         onClick={props.toggle}>Toggle Persons</button>
     </div>
   )

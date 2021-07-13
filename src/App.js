@@ -43,37 +43,23 @@ class App extends Component {
 
   render() {
     // Adding Conditionals in React
-    let persons = null
-    let btnClass = [classes.button]
+    let persons = null;
 
     if (this.state.showPerson) {
-      persons = (
-        <div>
-          <Persons
-            persons={this.state.persons}
-            click={this.deletePersonHandler}
-            changed={this.nameChangedHandler}
-          />
-        </div>
-      );
-
-      btnClass.push(classes.Red)
-    }
-
-    const assignClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignClasses.push(classes.red);
-    }
-    if (this.state.persons.length <= 1) {
-      assignClasses.push(classes.bold);
+      persons = <Persons
+        persons={this.state.persons}
+        click={this.deletePersonHandler}
+        changed={this.nameChangedHandler}
+      />;
     }
 
     return (
       <div className={classes.App}>
         <Cockpit
-          btnClass={this.btnClass.join(' ')}
-        />
-        {/* Putting Person component under conditional statement using ternary operator */}
+          persons={this.state.persons}
+          showPersons={this.state.showPerson}
+          toggle={this.togglePersonHandler}
+        /> 
         {persons}
 
       </div>
