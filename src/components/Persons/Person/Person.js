@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './Person.css';
 
-const person = (props) => {
+const person = props => {
+  console.log('[App.js] Person rendering...');
   return (
     <div className={classes.Person}>
         {/* Click call right here from the parent element */}
