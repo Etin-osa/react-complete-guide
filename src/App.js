@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import Persons from './components/Persons/Persons';
 import Cockpit from './components/Cockpit/Cockpit';
+
+import Incharge from './hoc/Incharge';
+import withClass from './hoc/withClass'
+
 import classes from './App.css';
 
 
 
 // Using state and re-rendering using Class based React Component
 class App extends Component {
-  constructor(props) {
-    super(props);
-    console.log('[App.js] constructor')
-  }
-
   state = {
     persons: [
       { id: 'akdjdp', name: "Max", age: 28 },
@@ -23,13 +22,17 @@ class App extends Component {
     showPerson: false
   }
 
-  static getDerivedStateFromProps(props, state) {
-    console.log('[App.js] getDerivedStateFromProps', props);
-    return state;
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
+z
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
   }
 
-  componentDidMount() {
-    console.log('[App.js] componentDidMount')
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
   }
 
   deletePersonHandler = (personIndex) => {
@@ -47,7 +50,7 @@ class App extends Component {
     const allPersons = [...this.state.persons];
     allPersons[personIndex] = getPerson;
 
-    this.setState({ persons: allPersons })
+    this.setState({ persons: allPersons });
   }
 
   togglePersonHandler = () => {
@@ -70,18 +73,18 @@ class App extends Component {
     }
 
     return (
-      <div className={classes.App}>
+      <Incharge>
         <Cockpit
           title={this.props.appTitle}
-          persons={this.state.persons}
+          personsLength={this.state.persons.length}
           showPersons={this.state.showPerson}
           toggle={this.togglePersonHandler}
         /> 
         {persons}
 
-      </div>
+      </Incharge>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
