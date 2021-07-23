@@ -3,13 +3,13 @@ import Person from './Person/Person';
 
 const Persons = props => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      alert('[Persons.js] using useEffect()');
-    }, 1000)
-
+    // const timer = setTimeout(() => {
+    //   alert('[Persons.js] using useEffect()');
+    // }, 1000)
+    console.log('[Persons.js] Loading')
     return (() => {
-      clearTimeout(timer);
-      console.log('[Persons.js], successful cleanup')
+      // clearTimeout(timer);
+      console.log('[Persons.js] successful cleanup')
     })
   })
 

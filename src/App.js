@@ -25,7 +25,7 @@ class App extends Component {
   componentDidMount() {
     console.log('[App.js] componentDidMount');
   }
-z
+
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[App.js] shouldComponentUpdate');
     return true;

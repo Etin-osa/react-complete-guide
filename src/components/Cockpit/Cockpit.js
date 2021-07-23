@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css'
 
 const Cockpit = props => {
+  const buttonRef = useRef(null);
+
   useEffect(() => {
-    console.log('[Cockpit.js] useEffect()');
-  })
+    console.log('[Cockpit.js] useEffect');
+    buttonRef.current.click();
+  }, [])
 
   const assignClasses = [];
   let btnClass = [];
@@ -32,6 +35,7 @@ const Cockpit = props => {
 
       <button
         className={btnClass.join(' ')}
+        ref={buttonRef}
         onClick={props.toggle}>Toggle Persons</button>
     </div>
   )
